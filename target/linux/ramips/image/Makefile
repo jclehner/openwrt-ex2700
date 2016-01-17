@@ -241,7 +241,6 @@ define BuildFirmware/Edimax/squashfs
 endef
 BuildFirmware/Edimax/initramfs=$(call BuildFirmware/OF/initramfs,$(1),$(2),$(3))
 
-
 # build Seama header images
 define BuildFirmware/Seama/squashfs
 	$(call MkImageLzmaDtb,$(2),$(3),$(5))
@@ -890,6 +889,7 @@ Image/Build/Profile/ArcherC20i=$(call BuildFirmware/Tplink/$(1),$(1),ArcherC20i,
 microwrt_mtd_size=16515072
 Image/Build/Profile/MicroWRT=$(call BuildFirmware/CustomFlash/$(1),$(1),microwrt,MicroWRT,$(microwrt_mtd_size))
 Image/Build/Profile/EX2700=$(call BuildFirmware/Default4M/$(1),$(1),ex2700,EX2700)
+
 
 ifeq ($(SUBTARGET),mt7620)
 define Image/Build/Profile/Default
