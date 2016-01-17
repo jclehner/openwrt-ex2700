@@ -1,0 +1,149 @@
+/dts-v1/;
+
+/include/ "mt7620a.dtsi"
+
+/ {
+	compatible = "NETGEAR EX2700", "ralink,mt7620a-soc";
+	model = "Netgear EX2700";
+
+	chosen {
+		bootargs = "console=ttyS0,57600";
+	};
+
+	palmbus@10000000 {
+		gpio0: gpio@600 {
+			status = "okay";
+		};
+
+		gpio1: gpio@638 {
+			status = "okay";
+		};
+
+		gpio2: gpio@660 {
+			status = "okay";
+		};
+
+		gpio3: gpio@688 {
+			status = "okay";
+		};
+
+		spi@b00 {
+			status = "okay";
+
+			m25p80@0 {
+				#address-cells = <1>;
+				#size-cells = <1>;
+				compatible = "mx25l3205d";
+				reg = <0 0>;
+				linux,modalias = "m25p80", "mx25l3205d";
+				spi-max-frequency = <10000000>;
+
+				partition@0 {
+					label = "u-boot";
+					reg = <0x0 0x30000>;
+					read-only;
+				};
+
+				partition@30000 {
+					label = "u-boot-env";
+					reg = <0x30000 0x10000>;
+					read-only;
+				};
+
+				partition@40000 {
+					label = "firmware";
+					reg = <0x40000 0x370000>;
+				};
+
+				// The next 3 partitions (256 kB in total) are not needed
+				// for OpenWrt, but we'll leave them alone for now, in case
+				// someone wants to go back to the original firmware.
+
+				partition@3b0000 {
+					label = "language";
+					reg = <0x3b0000 0x20000>;
+				};
+
+				partition@3d0000 {
+					label = "pot";
+					reg = <0x3d0000 0x10000>;
+				};
+
+				partition@3e0000 {
+					label = "config";
+					reg = <0x3b0000 0x10000>;
+				};
+
+				// TODO: rename this to "factory"?
+
+				art: partition@3f0000 {
+					label = "art";
+					reg = <0x3f0000 0x10000>;
+					read-only;
+				};
+			};
+		};
+	};
+
+	ehci@101c0000 {
+		status = "okay";
+	};
+
+	ohci@101c1000 {
+		status = "okay";
+	};
+
+	ethernet@10100000 {
+		pinctrl-names = "default";
+		pinctrl-0 = <&ephy_pins>;
+		mtd-mac-address = <&art 0x0>;
+		ralink,port-map = "llllw";
+	};
+
+	wmac@10180000 {
+		status = "okay";
+		ralink,mtd-eeprom = <&art 0x1000>;
+	};
+
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "i2c", "rgmii1";
+				ralink,function = "gpio";
+			};
+		};
+	};
+
+	
+	gpio-leds {
+		compatible = "gpio-leds";
+		
+		blue {
+			label = "ex2700:blue:status";
+			gpios = <&gpio1 0 1>;
+		};
+
+		yellow {
+			label = "ex2700:yellow:status";
+			gpios = <&gpio1 2 1>;
+		};
+
+		red {
+			label = "ex2700:red:status";
+			gpios = <&gpio1 5 1>;
+		};
+	};
+
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+		reset {
+			label = "reset";
+			gpios = <&gpio1 6 0>;
+			linux,code = <0x198>;
+		};
+	};
+	
+};
