@@ -114,10 +114,9 @@
 		};
 	};
 
-	
 	gpio-leds {
 		compatible = "gpio-leds";
-		
+
 		blue {
 			label = "ex2700:blue:status";
 			gpios = <&gpio1 0 1>;
@@ -145,5 +144,4 @@
 			linux,code = <0x198>;
 		};
 	};
-	
 };
