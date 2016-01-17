@@ -107,29 +107,10 @@
 
 	pinctrl {
 		state_default: pinctrl0 {
-			gpio {
-				ralink,group = "i2c", "rgmii1";
+			default {
+				ralink,group = "ephy", "wled", "pa", "i2c", "wdt", "uartf", "rgmii1";
 				ralink,function = "gpio";
 			};
-		};
-	};
-
-	gpio-leds {
-		compatible = "gpio-leds";
-
-		blue {
-			label = "ex2700:blue:status";
-			gpios = <&gpio1 0 1>;
-		};
-
-		yellow {
-			label = "ex2700:yellow:status";
-			gpios = <&gpio1 2 1>;
-		};
-
-		red {
-			label = "ex2700:red:status";
-			gpios = <&gpio1 5 1>;
 		};
 	};
 
