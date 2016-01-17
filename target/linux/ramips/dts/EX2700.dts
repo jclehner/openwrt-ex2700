@@ -3,7 +3,7 @@
 /include/ "mt7620a.dtsi"
 
 / {
-	compatible = "NETGEAR EX2700", "ralink,mt7620a-soc";
+	compatible = "ralink,mt7620a-soc";
 	model = "Netgear EX2700";
 
 	chosen {
