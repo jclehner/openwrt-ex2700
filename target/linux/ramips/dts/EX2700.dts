@@ -23,9 +23,11 @@
 			status = "okay";
 		};
 
+		/*
 		gpio3: gpio@688 {
 			status = "okay";
 		};
+		*/
 
 		spi@b00 {
 			status = "okay";
@@ -101,7 +103,7 @@
 	pinctrl {
 		state_default: pinctrl0 {
 			default {
-				ralink,group = "ephy", "wled", "pa", "i2c", "wdt", "uartf", "rgmii1";
+				ralink,group = "ephy", "wled", "wdt", "uartf";
 				ralink,function = "gpio";
 			};
 		};
@@ -113,31 +115,37 @@
 		power {
 			label = "ex2700:green:power";
 			gpios = <&gpio0 9 0>;
+			default-state = "on";
 		};
 
 		power2 {
 			label = "ex2700:red:power";
 			gpios = <&gpio0 11 0>;
+			default-state = "off";
 		};
 
 		device {
 			label = "ex2700:green:device";
 			gpios = <&gpio0 13 0>;
+			default-state = "off";
 		};
 
 		device2 {
 			label = "ex2700:red:device";
 			gpios = <&gpio0 10 0>;
+			default-state = "off";
 		};
 
 		router {
 			label = "ex2700:green:router";
 			gpios = <&gpio0 12 0>;
+			default-state = "off";
 		};
 
 		router2 {
 			label = "ex2700:red:router";
 			gpios = <&gpio0 14 0>;
+			default-state = "off";
 		};
 	};
 
