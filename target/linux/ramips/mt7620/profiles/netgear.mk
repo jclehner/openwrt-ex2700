@@ -7,7 +7,7 @@
 
 define Profile/EX2700
  NAME:=Netgear EX2700
- PACKAGES:=kmod-mt76
+ PACKAGES:=-kmod-usb-core -kmod-usb2 -kmod-usb-ohci -kmod-ledtrig-usbdev
 endef
 
 define Profile/EX2700/Description

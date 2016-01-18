@@ -113,6 +113,7 @@ ramips_setup_interfaces()
 		ucidef_add_switch_vlan "switch0" "1" "1 2 3 4 6t"
 		;;
 
+	ex2700 | \
 	cf-wr800n)
 		ucidef_set_interface_lan "eth0.1"
 		ucidef_add_switch "switch0" "1" "1"
@@ -250,7 +251,6 @@ ramips_setup_interfaces()
 	d105 | \
 	na930 | \
 	omni-emb-hpm|\
-	ex2700 | \
 	wli-tx4-ag300n)
 		ucidef_set_interface_lan "eth0"
 		;;
@@ -355,6 +355,8 @@ ramips_setup_macs()
 		;;
 
 	rt-n56u)
+		wan_mac=$(mtd_get_mac_binary factory 4)
+		lan_mac=$(mtd_get_mac_binary factory 46)
 		lan_mac=$(cat /sys/class/net/eth0/address)
 		lan_mac=$(macaddr_setbit_la "$lan_mac")
 		wan_mac=$(mtd_get_mac_binary factory 32772)
@@ -385,6 +387,10 @@ ramips_setup_macs()
 	linkits7688d)
 		wan_mac=$(mtd_get_mac_binary factory 4)
 		lan_mac=$(mtd_get_mac_binary factory 46)
+		;;
+	ex2700)
+		wan_mac=$(mtd_get_mac_binary art 0)
+		lan_mac=$(mtd_get_mac_binary art 6)
 		;;
 	*)
 		lan_mac=$(cat /sys/class/net/eth0/address)
