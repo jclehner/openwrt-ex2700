@@ -52,13 +52,11 @@
 
 				partition@40000 {
 					label = "firmware";
-					reg = <0x40000 0x370000>;
+					//reg = <0x40000 0x370000>;
+					reg = <0x40000 0x3a0000>;
 				};
 
-				// The next 3 partitions (256 kB in total) are not needed
-				// for OpenWrt, but we'll leave them alone for now, in case
-				// someone wants to go back to the original firmware.
-
+				/*
 				partition@3b0000 {
 					label = "language";
 					reg = <0x3b0000 0x20000>;
@@ -68,6 +66,11 @@
 					label = "pot";
 					reg = <0x3d0000 0x10000>;
 				};
+				*/
+
+				// While this partition is not used by OpenWrt, we'll
+				// leave it for now, in case someone wants to go back
+				// to the original firmware.
 
 				partition@3e0000 {
 					label = "config";
