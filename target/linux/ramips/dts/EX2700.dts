@@ -86,14 +86,6 @@
 		};
 	};
 
-	ehci@101c0000 {
-		status = "okay";
-	};
-
-	ohci@101c1000 {
-		status = "okay";
-	};
-
 	ethernet@10100000 {
 		pinctrl-names = "default";
 		pinctrl-0 = <&ephy_pins>;
