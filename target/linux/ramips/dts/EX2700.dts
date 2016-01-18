@@ -102,8 +102,8 @@
 	pinctrl {
 		state_default: pinctrl0 {
 			default {
-				ralink,group = "i2c", "spi", "uartlite", "mdio", "rgmii1",
-						"spi refclk", "ephy", "rgmii2", "wled", "pa", "uartf";
+				ralink,group = "i2c", "uartlite", "mdio", "rgmii1",
+						"ephy", "rgmii2", "wled", "pa", "uartf";
 
 				//"i2c", "wled", "ephy", "uartf", "rgmii2", ;
 				ralink,function = "gpio";
