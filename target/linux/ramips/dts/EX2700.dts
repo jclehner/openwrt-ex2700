@@ -74,7 +74,7 @@
 
 				partition@3e0000 {
 					label = "config";
-					reg = <0x3b0000 0x10000>;
+					reg = <0x3e0000 0x10000>;
 				};
 
 				art: partition@3f0000 {
