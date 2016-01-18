@@ -115,7 +115,9 @@ case $board in
 		set_wifi_led "rt2800pci-phy0::radio"
 		;;
 	ex2700)
-		set_wifi_led "ex2700:green:router"
+		ucidef_set_default "power" "POWER" "ex2700:green:power" "1"
+		ucidef_set_led_netdev "router" "ROUTER" "ex2700:green:router" "wlan0"
+		ucidef_set_led_netdev "router" "DEVICE" "ex2700:green:router" "wlan0-1"
 		;;
 	f5d8235-v1)
 		set_usb_led "f5d8235-v1:blue:storage"

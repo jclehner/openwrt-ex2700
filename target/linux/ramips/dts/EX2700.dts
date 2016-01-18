@@ -89,10 +89,10 @@
 	};
 
 	ethernet@10100000 {
-		pinctrl-names = "default";
-		pinctrl-0 = <&ephy_pins>;
+		//pinctrl-names = "default";
+		//pinctrl-0 = <&ephy_pins>;
 		mtd-mac-address = <&art 0x0>;
-		ralink,port-map = "llllw";
+		//ralink,port-map = "llllw";
 	};
 
 	wmac@10180000 {
@@ -103,7 +103,7 @@
 	pinctrl {
 		state_default: pinctrl0 {
 			default {
-				ralink,group = "ephy", "wled", "wdt", "uartf";
+				ralink,group = "wled", "wdt", "uartf";
 				ralink,function = "gpio";
 			};
 		};
@@ -112,40 +112,34 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		power {
+		power_g {
 			label = "ex2700:green:power";
-			gpios = <&gpio0 9 0>;
-			default-state = "on";
+			gpios = <&gpio0 9 1>;
 		};
 
-		power2 {
+		power_r {
 			label = "ex2700:red:power";
-			gpios = <&gpio0 11 0>;
-			default-state = "off";
+			gpios = <&gpio0 11 1>;
 		};
 
-		device {
+		device_g {
 			label = "ex2700:green:device";
-			gpios = <&gpio0 13 0>;
-			default-state = "off";
+			gpios = <&gpio0 13 1>;
 		};
 
-		device2 {
+		device_r {
 			label = "ex2700:red:device";
-			gpios = <&gpio0 10 0>;
-			default-state = "off";
+			gpios = <&gpio0 10 1>;
 		};
 
-		router {
+		router_g {
 			label = "ex2700:green:router";
-			gpios = <&gpio0 12 0>;
-			default-state = "off";
+			gpios = <&gpio0 12 1>;
 		};
 
-		router2 {
+		router_r {
 			label = "ex2700:red:router";
-			gpios = <&gpio0 14 0>;
-			default-state = "off";
+			gpios = <&gpio0 14 1>;
 		};
 	};
 
