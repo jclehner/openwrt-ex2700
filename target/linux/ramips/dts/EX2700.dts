@@ -74,8 +74,6 @@
 					reg = <0x3b0000 0x10000>;
 				};
 
-				// TODO: rename this to "factory"?
-
 				art: partition@3f0000 {
 					label = "art";
 					reg = <0x3f0000 0x10000>;
@@ -114,15 +112,71 @@
 		};
 	};
 
+	gpio-leds {
+		compatible = "gpio-leds";
+
+		power {
+			label = "ex2700:green:power";
+			gpios = <&gpio0 11 1>, <&gpio0 9 0>;
+		};
+
+		power2 {
+			label = "ex2700:red:power";
+			gpios = <&gpio0 9 1>, <&gpio0 11 0>;
+		};
+
+		power3 {
+			label = "ex2700:amber:power";
+			gpios = <&gpio0 9 0>, <&gpio0 11 0>;
+		};
+
+		device {
+			label = "ex2700:green:device";
+			gpios = <&gpio0 13 0>, <&gpio0 10 1>;
+		};
+
+		device2 {
+			label = "ex2700:red:device";
+			gpios = <&gpio0 13 1>, <&gpio0 10 0>;
+		};
+
+		device3 {
+			label = "ex2700:amber:device";
+			gpios = <&gpio0 13 0>, <&gpio0 10 0>;
+		};
+
+		router {
+			label = "ex2700:green:router";
+			gpios = <&gpio0 12 0>, <&gpio0 14 1>;
+		};
+
+		router2 {
+			label = "ex2700:red:router";
+			gpios = <&gpio0 12 1>, <&gpio0 14 0>;
+		};
+
+		router3 {
+			label = "ex2700:amber:router";
+			gpios = <&gpio0 12 0>, <&gpio0 14 0>;
+		};
+	};
+
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
 		#size-cells = <0>;
 		poll-interval = <20>;
+
 		reset {
 			label = "reset";
-			gpios = <&gpio1 6 0>;
+			gpios = <&gpio0 1 0>;
 			linux,code = <0x198>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio0 2 0>;
+			linux,code = <0x211>;
 		};
 	};
 };
