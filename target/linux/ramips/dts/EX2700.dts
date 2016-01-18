@@ -23,11 +23,9 @@
 			status = "okay";
 		};
 
-		/*
 		gpio3: gpio@688 {
 			status = "okay";
 		};
-		*/
 
 		spi@b00 {
 			status = "okay";
@@ -89,21 +87,25 @@
 	};
 
 	ethernet@10100000 {
-		//pinctrl-names = "default";
-		//pinctrl-0 = <&ephy_pins>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&ephy_pins>;
 		mtd-mac-address = <&art 0x0>;
 		//ralink,port-map = "llllw";
 	};
 
 	wmac@10180000 {
-		status = "okay";
+		pinctrl-names = "default";
+		pinctrl-0 = <&wled_pins>;
 		ralink,mtd-eeprom = <&art 0x1000>;
 	};
 
 	pinctrl {
 		state_default: pinctrl0 {
 			default {
-				ralink,group = "wled", "wdt", "uartf";
+				ralink,group = "i2c", "spi", "uartlite", "mdio", "rgmii1",
+						"spi refclk", "ephy", "rgmii2", "wled", "pa", "uartf";
+
+				//"i2c", "wled", "ephy", "uartf", "rgmii2", ;
 				ralink,function = "gpio";
 			};
 		};
@@ -115,6 +117,7 @@
 		power_g {
 			label = "ex2700:green:power";
 			gpios = <&gpio0 9 1>;
+			default-state = "on";
 		};
 
 		power_r {
@@ -151,13 +154,13 @@
 
 		reset {
 			label = "reset";
-			gpios = <&gpio0 1 0>;
+			gpios = <&gpio0 1 1>;
 			linux,code = <0x198>;
 		};
 
 		wps {
 			label = "wps";
-			gpios = <&gpio0 2 0>;
+			gpios = <&gpio0 2 1>;
 			linux,code = <0x211>;
 		};
 	};
