@@ -57,6 +57,7 @@ ramips_setup_interfaces()
 	dcs-930| \
 	dcs-930l-b1| \
 	ht-tm02| \
+	ex2700| \
 	ncs601w | \
 	wnce2001)
 		ucidef_add_switch "switch0" "1" "0"
@@ -113,7 +114,6 @@ ramips_setup_interfaces()
 		ucidef_add_switch_vlan "switch0" "1" "1 2 3 4 6t"
 		;;
 
-	ex2700 | \
 	cf-wr800n)
 		ucidef_set_interface_lan "eth0.1"
 		ucidef_add_switch "switch0" "1" "1"
@@ -387,10 +387,6 @@ ramips_setup_macs()
 	linkits7688d)
 		wan_mac=$(mtd_get_mac_binary factory 4)
 		lan_mac=$(mtd_get_mac_binary factory 46)
-		;;
-	ex2700)
-		wan_mac=$(mtd_get_mac_binary art 0)
-		lan_mac=$(mtd_get_mac_binary art 6)
 		;;
 	*)
 		lan_mac=$(cat /sys/class/net/eth0/address)
