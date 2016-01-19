@@ -61,6 +61,11 @@
 		mtd-mac-address = <&art 0x0>;
 	};
 
+	esw@10110000 {
+		ralink,portmap = <0x10>;
+		ralink,portdisable = <0x2f>;
+	};
+
 	wmac@10180000 {
 		ralink,mtd-eeprom = <&art 0x1000>;
 	};
