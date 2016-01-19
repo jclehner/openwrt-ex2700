@@ -64,7 +64,7 @@ get_status_led() {
 		status_led="esr-9753:orange:power"
 		;;
 	ex2700)
-		status_led="ex2700:red:power"
+		status_led="netgear:red:power"
 		;;
 	f5d8235-v2)
 		status_led="f5d8235v2:blue:router"
