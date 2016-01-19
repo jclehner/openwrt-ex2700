@@ -16,6 +16,10 @@
 			status = "okay";
 		};
 
+		gpio1: gpio@638 {
+			status = "okay";
+		};
+
 		spi@b00 {
 			status = "okay";
 
@@ -64,9 +68,10 @@
 	pinctrl {
 		state_default: pinctrl0 {
 			default {
-				// uartf: &gpio0: 8, 9, 10, 11, 12, 13, 14
-				//   i2c: &gpio0: 1, 2
-				ralink,group = "i2c", "uartf";
+				//  spi refclk: pins 37, 38, 39
+				//       uartf: pins 8, 9, 10, 11, 12, 13, 14
+				//         i2c: pins 1, 2
+				ralink,group = "i2c", "uartf", "spi refclk";
 				ralink,function = "gpio";
 			};
 		};
@@ -104,6 +109,11 @@
 		router_r {
 			label = "netgear:red:router";
 			gpios = <&gpio0 14 1>;
+		};
+
+		wps {
+			label = "netgear:green:wps";
+			gpios = <&gpio1 15 1>;
 		};
 	};
 
