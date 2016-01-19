@@ -39,9 +39,6 @@
 					read-only;
 				};
 
-				// This encompasses the following stock partitions:
-				// kernel, rootfs, language, pot, config
-
 				partition@40000 {
 					label = "firmware";
 					reg = <0x40000 0x3b0000>;
@@ -79,33 +76,33 @@
 		compatible = "gpio-leds";
 
 		power_g {
-			label = "ex2700:green:power";
+			label = "netgear:green:power";
 			gpios = <&gpio0 9 1>;
 			default-state = "on";
 		};
 
 		power_r {
-			label = "ex2700:red:power";
+			label = "netgear:red:power";
 			gpios = <&gpio0 11 1>;
 		};
 
 		device_g {
-			label = "ex2700:green:device";
+			label = "netgear:green:device";
 			gpios = <&gpio0 13 1>;
 		};
 
 		device_r {
-			label = "ex2700:red:device";
+			label = "netgear:red:device";
 			gpios = <&gpio0 10 1>;
 		};
 
 		router_g {
-			label = "ex2700:green:router";
+			label = "netgear:green:router";
 			gpios = <&gpio0 12 1>;
 		};
 
 		router_r {
-			label = "ex2700:red:router";
+			label = "netgear:red:router";
 			gpios = <&gpio0 14 1>;
 		};
 	};
