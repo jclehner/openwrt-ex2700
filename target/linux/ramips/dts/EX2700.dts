@@ -81,38 +81,38 @@
 		compatible = "gpio-leds";
 
 		power_g {
-			label = "netgear:green:power";
+			label = "ex2700:green:power";
 			gpios = <&gpio0 9 1>;
 			default-state = "on";
 		};
 
 		power_r {
-			label = "netgear:red:power";
+			label = "ex2700:red:power";
 			gpios = <&gpio0 11 1>;
 		};
 
 		device_g {
-			label = "netgear:green:device";
+			label = "ex2700:green:device";
 			gpios = <&gpio0 13 1>;
 		};
 
 		device_r {
-			label = "netgear:red:device";
+			label = "ex2700:red:device";
 			gpios = <&gpio0 10 1>;
 		};
 
 		router_g {
-			label = "netgear:green:router";
+			label = "ex2700:green:router";
 			gpios = <&gpio0 12 1>;
 		};
 
 		router_r {
-			label = "netgear:red:router";
+			label = "ex2700:red:router";
 			gpios = <&gpio0 14 1>;
 		};
 
 		wps {
-			label = "netgear:green:wps";
+			label = "ex2700:green:wps";
 			gpios = <&gpio1 15 1>;
 		};
 	};
