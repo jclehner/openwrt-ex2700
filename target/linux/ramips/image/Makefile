@@ -855,6 +855,7 @@ endif
 #
 
 Image/Build/Profile/E1700=$(call BuildFirmware/UMedia/$(1),$(1),e1700,E1700,0x013326)
+Image/Build/Profile/EX2700=$(call BuildFirmware/Default4M/$(1),$(1),ex2700,EX2700)
 Image/Build/Profile/MT7620a=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a,MT7620a)
 Image/Build/Profile/MT7620a_MT7610e=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a_mt7610e,MT7620a_MT7610e)
 Image/Build/Profile/MT7620a_MT7530=$(call BuildFirmware/Default8M/$(1),$(1),mt7620a_mt7530,MT7620a_MT7530)
@@ -888,12 +889,12 @@ Image/Build/Profile/ZBT-WA05=$(call BuildFirmware/Default8M/$(1),$(1),zbt-wa05,Z
 Image/Build/Profile/ArcherC20i=$(call BuildFirmware/Tplink/$(1),$(1),ArcherC20i,ArcherC20i)
 microwrt_mtd_size=16515072
 Image/Build/Profile/MicroWRT=$(call BuildFirmware/CustomFlash/$(1),$(1),microwrt,MicroWRT,$(microwrt_mtd_size))
-Image/Build/Profile/EX2700=$(call BuildFirmware/Default4M/$(1),$(1),ex2700,EX2700)
 
 
 ifeq ($(SUBTARGET),mt7620)
 define Image/Build/Profile/Default
 	$(call Image/Build/Profile/E1700,$(1))
+	$(call Image/Build/Profile/EX2700,$(1))
 	$(call Image/Build/Profile/MT7620a,$(1))
 	$(call Image/Build/Profile/MT7620a_MT7610e,$(1))
 	$(call Image/Build/Profile/MT7620a_MT7530,$(1))
@@ -921,7 +922,6 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/ZBT-WA05,$(1))
 	$(call Image/Build/Profile/ArcherC20i,$(1))
 	$(call Image/Build/Profile/MicroWRT,$(1))
-	$(call Image/Build/Profile/EX2700,$(1))
 endef
 endif
 
