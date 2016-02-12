@@ -113,8 +113,7 @@ ramips_setup_interfaces()
 		ucidef_add_switch_vlan "switch0" "1" "1 2 3 4 6t"
 		;;
 
-	cf-wr800n|\
-	ex2700)
+	cf-wr800n)
 		ucidef_set_interface_lan "eth0.1"
 		ucidef_add_switch "switch0" "1" "1"
 		ucidef_add_switch_vlan "switch0" "1" "4 6t"
@@ -248,6 +247,7 @@ ramips_setup_interfaces()
 		ucidef_add_switch_vlan "switch0" "1" "1 2 3 4 5 6t"
 		ucidef_add_switch_vlan "switch0" "2" "0 6t"
 		;;
+	ex2700 | \
 	d105 | \
 	na930 | \
 	omni-emb-hpm|\
